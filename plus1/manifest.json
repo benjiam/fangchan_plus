@@ -1,0 +1,14 @@
+
+
+
+{
+    "name": "第一个Chrome插件",
+        "version": "1.0",
+        "manifest_version": 2,
+        "description": "我的第一个Chrome插件，还不错吧",
+        "browser_action": {
+            "default_icon": "icon.gif",
+            "default_title": "这是个查房子价格的插件",
+            "default_popup": "popup.html"
+        }
+}

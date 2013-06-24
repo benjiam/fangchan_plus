@@ -1,0 +1,102 @@
+{
+    "jd.com": {
+        "name": "JD",
+        "listUrl": "http://order.jd.com/center/list.action",
+        "urlPattern": "^(http://cart\\.jd\\.com/.*|http://cart\\.360buy\\.com/.*|http://order\\.jd\\.com/.*)",
+        "notLoginReg": "<input .*id=\"loginType\".*",
+        "tradeStartStatus": "等待自提|等待收货|正在出库",
+        "tradeEndStatus": "已完成|已取消",
+        "parseListTaskNum": 0,
+        "listPageFilterReg": "<table.*</table>",
+        "listPageProductRowSel": "tr",
+        "listPageProductNameSel": "td:nth-child(2) > div > a:nth-child(1) > img:nth-child(1)",
+        "listPageOrderIdSel": "td:nth-child(1) > a",
+        "listPageOrderStatusSel": "td:nth-child(6)",
+        "listPageDetailLinkSel": "a[name='orderIdLinks']",
+
+        "detailPageFilterReg": "",
+        "trackUrlSel": "http://order.jd.com/lazy/getOrderShowJson.action",
+        "osTimeSel": "",
+        "osContentSel": "",
+		"finishReg":"完成配送"
+    },
+
+    "taobao.com": {
+        "name": "TAOBAO",
+        "listUrl": "http://trade.taobao.com/trade/itemlist/list_bought_items.htm",
+        "urlPattern": "^(http://buy\\.tmall.com/.*|http://buy\\.taobao.com/.*|http://trade\\.taobao.com/.*)",
+        "notLoginReg": "登录名.*登录密码.*忘记登录密码|login.taobao.com/member/login.jhtml",
+        "tradeStartStatus": "买家已付款|卖家已发货",
+        "tradeEndStatus": "交易成功|交易关闭|退款中的订单",
+        "parseListTaskNum": 0,
+        "listPageFilterReg": "<table.*</table>",
+        "listPageProductRowSel": "tbody",
+        "listPageProductNameSel": "tr:nth-child(3) > td.baobei > div > a",
+        "listPageOrderIdSel": "tr:nth-child(2) > td > span > label > span.order-num",
+        "listPageOrderStatusSel": "tr:nth-child(3) > td.trade-status > a:nth-child(1)",
+        "listPageDetailLinkSel": "tr:nth-child(3) > td.trade-status > span > a.detail-link",
+
+        "detailPageFilterReg": "",
+        "trackUrlSel": "#J_ExList",
+        "expressCompanySel": ".logistics-list > dl > dd:nth-child(4)",
+        "expressIdSel": ".logistics-list > dl > dd:nth-child(6)",
+        "osTimeSel": "",
+        "osContentSel": "",
+		"finishReg":"签收"
+    },
+
+    "tmall.com": {
+        "name": "TAOBAO",
+        "listUrl": "http://trade.taobao.com/trade/itemlist/list_bought_items.htm",
+        "urlPattern": "^(http://buy\\.tmall.com/.*|http://buy\\.taobao.com/.*|http://trade\\.taobao.com/.*)",
+        "notLoginReg": "登录名.*登录密码.*忘记登录密码|login.taobao.com/member/login.jhtml",
+        "tradeStartStatus": "买家已付款|卖家已发货",
+        "tradeEndStatus": "交易成功|交易关闭|退款中的订单",
+        "parseListTaskNum": 0,
+        "listPageFilterReg": "<table.*</table>",
+        "listPageProductRowSel": "tbody",
+        "listPageProductNameSel": "tr:nth-child(3) > td.baobei > div > a",
+        "listPageOrderIdSel": "tr:nth-child(2) > td > span > label > span.order-num",
+        "listPageOrderStatusSel": "tr:nth-child(3) > td.trade-status > a:nth-child(1)",
+        "listPageDetailLinkSel": "tr:nth-child(3) > td.trade-status > span > a.detail-link",
+
+        "detailPageFilterReg": "",
+        "trackUrlSel": "#J_ExList",
+        "expressCompanySel": ".logistics-list > dl > dd:nth-child(4)",
+        "expressIdSel": ".logistics-list > dl > dd:nth-child(6)",
+        "osTimeSel": "",
+        "osContentSel": "",
+		"finishReg":"签收"
+    },
+
+    "z.cn": {
+        "name": "AMAZON",
+        "listUrl": "https://www.amazon.cn/gp/css/order-history",
+        "urlPattern": "^(http://www.amazon.cn/gp/product/handle-buy-box/.*)",
+        "notLoginReg": "我是一个新客户.*记住登录状态。",
+        "tradeStartStatus": "配送(?!成功)",
+        "tradeEndStatus": "配送成功",
+        "parseListTaskNum": 0,
+        "listPageFilterReg": "<body.*</body>",
+        "listPageProductRowSel": "div.action-box",
+        "listPageProductNameSel": ".item-title",
+        "listPageOrderIdSel": "ul.order-details > li > span:nth-child(2) > a",
+        "listPageOrderStatusSel": "div.status > h2",
+        "listPageDetailLinkSel": "div.order-links > a:nth-child(1)",
+
+        "detailPageFilterReg": "",
+        "trackUrlSel": "",
+        "osTimeSel": "",
+        "osContentSel": "",
+		"finishReg":"配送成功",
+
+        "host": "https://www.amazon.cn"
+    },
+
+    "global": {
+        "parseOrderInterval": "1800000",
+        "switch": "ON",
+        "helpUrl":"http://zhushou.huihui.cn/help?redirect=http%3A%2F%2Ffaq.zhushou.youdao.com%2Fdoc%2Fother%2Forder_user%2F"
+    }
+}
+

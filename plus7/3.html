@@ -1,0 +1,144 @@
+
+
+
+<html>
+<head>
+<title>test</title>
+
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="jquery-1.4.2.js">
+</script>
+
+<script type="text/javascript" src="jquery.timer1.2.js">
+</script>
+<style type="text/css">
+canvas { border: 1px solid black; }
+</style>
+</head>
+<body>
+
+<img src="1.gif">
+
+
+<script>
+var src="";
+
+function getOffset(object,attr)
+{
+    var offset = 0;
+    while (object)
+    {
+        offset += object[attr];
+        object = object.offsetParent;
+    } 
+    return offset; 
+} 
+
+function drawline( ctx, x1,y1, x2, y2, linewidth, style) {
+
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle=style;
+    ctx.lineWidth=linewidth;
+    ctx.stroke();
+
+}
+function draw() {
+    var canvas = document.getElementById("canvas");
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        for (i = 10; i <= 200; i+= 25)
+        {
+            drawline(ctx, i,0, i, 200, 0.5, "rgb(255,0,0)");
+        }
+        for (i = 10; i <= 200; i+= 25)
+        {
+            drawline(ctx, 0, i, 200, i, 1, "rgb(255,0,0)");
+        }
+
+    }
+}
+
+
+
+
+$( document ).ready(function() {
+        console.log( "ready!" );
+
+
+        $(document.body).append(
+        '<div id ="ddd1" style="z-index: 500" width="250" height="250">' +
+        'hello world' +
+        '<canvas id="canvas" width="200" height="200"></canvas>' +
+        '</div>'
+        );
+
+        draw();
+        //$("#canvas").hide();
+
+        $("img").bind("mouseover", function(){
+            src = $(this).attr('src'); // 保留当前图片路径
+
+            $(this).oneTime('2s', 'd', function() { // 定时器
+                if (src == "") {// 如果公共变量为空，那么说明没有停留在图片上
+                return;
+                }
+                // 测试是否还在原来的图片上
+                if (src == $(this).attr('src')) {
+                var x = getOffset($(this)[0], "offsetLeft");
+                var y = getOffset($(this)[0], "offsetTop");
+                var wid  = $(this).attr('width');
+                var high = $(this).attr('height');
+                //$(".over span").text(x);
+                //$(".enter span").text(y);
+                var x2 = x + wid;
+                var y2 = y + high/2;
+                // 希望把div ddd1 移动到图片边上来
+                $("#ddd1").css("position","absolute");
+                $("#ddd1").css("left",x2+ "px");
+                $("#ddd1").css("top", y2 + "px");
+                $("#ddd1").css("width", 250 + "px");
+                $("#ddd1").css("height", 250 + "px");
+
+                }
+                else {
+                    //alert("wrong");
+                }
+
+            });
+        });
+
+        $("img").bind("mouseout", function(){
+                src = "";
+
+                });
+
+});
+
+
+</script></br>
+</br>
+</br>
+</br>
+<img src="2.png">
+
+</br>
+</br>
+<div class="over" style="background-color:lightgray;padding:20px;width:40%;float:left">
+<h2 style="background-color:white;">x：<span></span></h2>
+</div>
+<div class="enter" style="background-color:lightgray;padding:20px;width:40%;float:right">
+<h2 style="background-color:white;">y：<span></span></h2>
+</div>
+
+
+<img id ="ddd" style="z-index: 500" src="3.jpg">
+
+
+
+</body>
+</html>
+<script>
+
+
+</script>
